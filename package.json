@@ -1,12 +1,11 @@
-//package.json
   {
     "name":"blog",
     "version":"0.0.1",
-    "description":"simple blog for practical purposes."
+    "description":"simple blog for practical purposes.",
     "main":"server.js",
     "author": "Nick Hilton",
     "dependencies": {
-      "express": "~3.4.4",
-      "mongoose": "~3.6.2"
+      "express": "3.*",
+      "mongoose": "3.*"
     }
   }
