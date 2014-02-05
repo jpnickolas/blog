@@ -18,10 +18,58 @@ var Article = mongoose.model('Article', {
   published: Date
 });
 
-/*
 app.get('/api/articles', function(req, res) {
-  Article.find(
-  );
-});*/
+  Article.find(function(err, articles) {
+    if(err) 
+      res.send(err);
+      
+    res.json(articles);
+  });
+});
+
+app.get('/api/articles/:article_id', function(req, res) {
+  Article.find({_id:req.params.article_id}, function(err, article) {
+    if(err)
+      res.send(err);
+
+    res.json(article);
+  });
+});
+
+app.post('/api/articles', function(req, res) {
+  var data = req.body;
+  Article.create({
+    title:data.title,
+    content: data.content,
+    summary: data.summary,
+    published: data.date
+  }, function(err, article) {
+    if(err)
+      res.send(err);
+      
+      Article.find(function(err, articles) {
+        if(err)
+          res.send(err);
+        
+        res.json(articles);
+      });
+  });
+});
+app.delete('/api/articles/:article_id', function(req, res) {
+  Article.remove( {
+    _id: req.params.article_id
+  }, function(err, article) {
+    if(err)
+      res.send(err);
+    
+    Article.find(function(err, articles) {
+      if(err)
+        res.send(err);
+      
+      res.json(articles);
+    });
+    
+  });
+});
 
 app.listen(8080);

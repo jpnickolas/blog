@@ -1,0 +1,12 @@
+<a href="#/post">New Post</a>
+<ul>
+  <li>Blog Posts</li>
+  <li ng-repeat="article in articles">
+    <h4>
+      <a href="#/post/{{article._id}}">
+        {{article.title}}
+      </a>
+    </h4>
+    <p>{{article.summary}}</p>
+  </li>
+</ul>
