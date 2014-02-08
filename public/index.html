@@ -1,15 +1,20 @@
 <!doctype html>
 <html ng-app="blog">
   <head>
-    <title>Hello World!</title>
+    <title>Nick Hilton!</title>
+    <link href="css/styles.css" type="text/css" rel="stylesheet">
     <script type="text/javascript" src="js/angular.min.js"></script>
     <script type="text/javascript" src="js/angular-route.min.js"></script>
     <script type="text/javascript" src="js/angular-animate.min.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
   </head>
   <body>
-    <h1>Hello World!</h1>
-    <h2>Welcome to my blog!</h2>
-    <div ng-view></div>
+    <div id="content">
+      <div id="header">
+        <h1>Nick Hilton</h1>
+        <h2>Welcome to my blog!</h2>
+      </div>
+      <div ng-view class="view"></div>
+    </div>
   </body>
 </html>

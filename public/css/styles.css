@@ -1,0 +1,27 @@
+body {
+  background-color:#A4D89D;
+}
+#content {
+  margin:0 auto;
+  width:800px;
+  border-radius:0 25px;
+  opacity:0.8;
+  background-color:#F5F1A0;
+  color:#0C2C00;
+  border:2px solid #103800;
+  overflow:hidden;
+}
+
+a {
+  color:#0C2C00;
+  font-weight:bold;
+}
+
+#header {
+  background-color:#39BE18;
+  padding:25px;
+}
+
+.view {
+  padding:25px;
+}
