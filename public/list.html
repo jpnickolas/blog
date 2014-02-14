@@ -7,6 +7,6 @@
         {{article.title}}
       </a>
     </h4>
-    <p>{{article.summary}}</p>
+    <div ng-bind-html="article.summary | trustHTML"></div>
   </li>
 </ul>

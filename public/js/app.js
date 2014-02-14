@@ -1,4 +1,4 @@
-angular.module('blog', ['ngRoute','ngAnimate'])
+angular.module('blog', ['ngRoute','ngAnimate','ngSanitize'])
 
 .factory('Articles', function($http) {
   var factory = {};
@@ -9,7 +9,7 @@ angular.module('blog', ['ngRoute','ngAnimate'])
     return $http.get('/api/articles/'+id);
   };
   factory.saveArticle = function(article) {
-    return $http.post('/api/articles', {
+    return $http.post('/api/articles/'+article._id, {
       title:article.title,
       content:article.content,
       summary:article.content,
@@ -42,6 +42,12 @@ angular.module('blog', ['ngRoute','ngAnimate'])
     });
 })
 
+.filter('trustHTML', function($sce) {
+  return function(val) {
+    return $sce.trustAsHtml(val);
+  };
+})
+
 .controller('ListCtrl', function($scope, Articles) {
   Articles.getArticles().success(function(data) {
     $scope.articles = data;
@@ -61,7 +67,7 @@ angular.module('blog', ['ngRoute','ngAnimate'])
 .controller('EditPostCtrl', function($scope, $routeParams, $location, Articles) {
  
   $scope.article = {};
-
+  
   Articles.getArticle($routeParams.post_id).success(function(data) {
     $scope.article=data[0];
   });
