@@ -1,25 +1,27 @@
 body {
-  background-color:#A4D89D;
+  background-color:#FFF;
 }
 #content {
   margin:0 auto;
-  width:800px;
+  width:80%;
+  max-width:800px;
   border-radius:0 25px;
   opacity:0.8;
-  background-color:#F5F1A0;
-  color:#0C2C00;
-  border:2px solid #103800;
+  background-color:#D3EDFF;
+  color:#000;
+  border:2px solid #000B38;
   overflow:hidden;
 }
 
 a {
-  color:#0C2C00;
+  color:#000;
   font-weight:bold;
 }
 
 #header {
-  background-color:#39BE18;
+  background-color:#004399;
   padding:25px;
+  color:#FFF;
 }
 
 .view {
