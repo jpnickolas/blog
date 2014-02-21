@@ -1,29 +1,120 @@
 body {
-  background-color:#FFF;
+  background-color:#535353;
 }
 #content {
   margin:0 auto;
-  width:80%;
+  width:90%;
+  min-width:690px;
   max-width:800px;
   border-radius:0 25px;
-  opacity:0.8;
-  background-color:#D3EDFF;
-  color:#000;
-  border:2px solid #000B38;
+  background-color:#141414;
+  color:#FFF;
+  border:2px solid #000;
   overflow:hidden;
 }
 
 a {
-  color:#000;
+  color:#FF7A00;
   font-weight:bold;
+  text-decoration:none;
 }
 
 #header {
-  background-color:#004399;
+  background-color:#FF7A00;
+  background: -webkit-gradient(linear, left top, left bottom, 
+    color-stop(95%,#FF7A00), color-stop(100%,#141414));
   padding:25px;
-  color:#FFF;
+  color:#000;
+  position:relative;
+  overflow:hidden;
 }
 
 .view {
   padding:25px;
+}
+
+#posts {
+  padding:0 10px;;
+}
+
+#posts li {
+  list-style:none;
+  border-bottom:1px solid #FF7A00;
+  padding-bottom:25px;
+}
+
+#rotate-image {
+  -webkit-transform: rotatey(0deg);
+  -webkit-transition: 500ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  transform: rotatey(0deg);
+  transition: 500ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+}
+#rotate-image:hover {
+  -webkit-transform: rotatey(180deg);
+  transform: rotatey(180deg);
+}
+
+#nav {
+  position: absolute;
+  width: 650px;
+  height: 100px;
+  background-color: rgba(68,68,68,0.15);
+  top: 15%;
+  right:50px;
+  -webkit-transform: rotatez(30deg);
+  transform: rotatez(30deg);
+}
+
+#nav ul {
+  margin-left:175px;
+  margin-top:5px;
+}
+
+#nav li {
+  transform:rotatez(-30deg);
+  -webkit-transform:rotatez(-30deg);
+  float:left;
+  list-style:none;
+  margin-left:5px;
+}
+
+#nav a {
+  color:#000;
+  display:block;
+  border:2px #000 solid;
+  width:50px;
+  height:50px;
+  text-align:center;
+  margin:15px;
+  font-size:10px;
+  border-radius:5px;
+  background:rgba(255,255,255,0.2);
+}
+#nav img {
+  margin-top:5px;
+  max-width:30px;
+  max-height:30px;
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+  transition: 500ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+}
+#nav a:hover img {
+  -webkit-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+}
+
+#nav a:hover {
+  background-color:#000;
+  color:#FF7A00;
+}
+
+#header-corner {
+position: absolute;
+  width: 200px;
+  height: 235px;
+  background-color: rgba(68,68,68,0.15);
+  bottom: -50%;
+  right: -125px;
+  -webkit-transform: rotatez(30deg);
+  transform: rotatez(30deg);
 }

@@ -45,7 +45,7 @@ angular.module('blog', ['ngRoute','ngAnimate','ngSanitize'])
       controller: 'ViewPostCtrl',
       templateUrl: 'view.html'
     })
-    .when('/post/edit', {
+    .when('/new/post', {
       controller: 'NewPostCtrl',
       templateUrl: 'edit.html'
     })
