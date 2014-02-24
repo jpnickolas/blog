@@ -27,6 +27,8 @@ a {
   background-color:#FF7A00;
   background: -webkit-gradient(linear, left top, left bottom, 
     color-stop(95%,#FF7A00), color-stop(100%,#141414));
+  background: -moz-linear-gradient(top, #FF7A00 95%, #141414 100%);
+  background: -ms-linear-gradient(top, #FF7A00 95%, #141414 100%);
   padding:25px;
   color:#000;
   position:relative;
@@ -52,6 +54,7 @@ a {
   -webkit-transition: 500ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
   transform: rotatey(0deg);
   transition: 500ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  border:none;
 }
 #rotate-image:hover {
   -webkit-transform: rotatey(180deg);
@@ -67,6 +70,7 @@ a {
   right:50px;
   -webkit-transform: rotatez(30deg);
   transform: rotatez(30deg);
+  -ms-transform: rotate(30deg);
 }
 
 #nav ul {
@@ -77,6 +81,7 @@ a {
 #nav li {
   transform:rotatez(-30deg);
   -webkit-transform:rotatez(-30deg);
+  -ms-transform: rotate(-30deg);
   float:left;
   list-style:none;
   margin-left:5px;
@@ -101,6 +106,7 @@ a {
   -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg);
   transition: 500ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  border:none;
 }
 #nav a:hover img {
   -webkit-transform: rotateY(0deg);
@@ -121,4 +127,5 @@ position: absolute;
   right: -125px;
   -webkit-transform: rotatez(30deg);
   transform: rotatez(30deg);
+  -ms-transform: rotate(30deg);
 }
