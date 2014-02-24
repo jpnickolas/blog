@@ -70,13 +70,14 @@ function loggedIn(user, callback) {
   
 
   User.findOne({_id:user}, function(err, found) {
-    if(err)
+    if(err) 
       callback(false);
 
-    if(!found)
+    else if(!found)
       callback(false);
-
-    callback(true);
+    
+    else
+      callback(true);
   });
 }
 
@@ -124,8 +125,10 @@ app.get('/api/articles/:article_url', function(req, res) {
 //edits an article based on the id provided, or creates a new article
 app.post('/api/articles/:article_id', function(req, res) {
   loggedIn(req.user, function(authenticated) {
-    if(!authenticated) 
+    if(!authenticated) {
       res.json(false);
+      return;
+    }
   
     var data = req.body;
   
@@ -170,8 +173,10 @@ app.post('/api/articles/:article_id', function(req, res) {
 //deletes an article based its id
 app.delete('/api/articles/:article_id', function(req, res) {
   loggedIn(req.user, function(authenticated) {
-    if(!authenticated) 
+    if(!authenticated) { 
       res.json(false);
+      return;
+    }
   
     //removes the article from the database   
     Article.remove( {

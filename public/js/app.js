@@ -53,6 +53,12 @@ angular.module('blog', ['ngRoute','ngAnimate','ngSanitize'])
       controller:'EditPostCtrl',
       templateUrl:'edit.html'
     })
+    .when('/login', {
+      templateUrl:'login.html'
+    })
+    .when('/about', {
+      templateUrl:'about.html'
+    })
     .otherwise({
       redirectTo:'/'
     });

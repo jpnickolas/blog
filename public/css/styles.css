@@ -1,5 +1,9 @@
 body {
   background-color:#535353;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+}
+h1,h2 {
+  font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
 }
 #content {
   margin:0 auto;
