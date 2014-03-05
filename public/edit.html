@@ -5,6 +5,10 @@
   <input type="text" name="url" ng-model="article.url"><br>
   <label>Content</label><br>
   <textarea name="content" ng-model="article.content"></textarea><br>
+  <label>
+    <input type="checkbox" name="draft" ng-model="article.draft" checked> 
+    Draft
+  </label><br>
   <a href="#/"><button>Back</button></a>
   <button ng-click="save()">Save</button>
   <button ng-click="delete()">Delete</button>

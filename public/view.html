@@ -1,3 +1,5 @@
 <h1>{{article.title}}</h1>
 
 <div ng-bind-html="article.content | trustHTML"></div>
+
+<a href="#/post/edit/{{article.url}}" ng-if="loggedIn">Edit Post</a>

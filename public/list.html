@@ -1,5 +1,8 @@
 <ul id="posts">
-  <li>Blog Posts</li>
+  <li>
+    Blog Posts 
+    <span ng-if="loggedIn"> - <a href="#/new/post">New Post</a></span>
+  </li>
   <li ng-repeat="article in articles">
     <h4>
       <a href="#/post/{{article.url}}">

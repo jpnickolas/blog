@@ -21,13 +21,18 @@ angular.module('blog', ['ngRoute','ngAnimate','ngSanitize'])
       url:article.url,
       content:article.content,
       summary:article.content,
-      published:dateNow()
+      published:dateNow(),
+      draft:article.draft
     });
   };
 
   //deletes an article from the server
   factory.deleteArticle = function(id) {
     return $http.delete('/api/articles/'+id);
+  };
+
+  factory.loggedIn = function() {
+    return $http.get('/api/loggedin');
   };
 
   return factory;
@@ -74,8 +79,15 @@ angular.module('blog', ['ngRoute','ngAnimate','ngSanitize'])
 
 //controller for listing the articles. Pretty simple
 .controller('ListCtrl', function($scope, Articles) {
+  
+  $scope.loggedIn=false;
+
   Articles.getArticles().success(function(data) {
     $scope.articles = data;
+  });
+  
+  Articles.loggedIn().success(function(data) {
+    $scope.loggedIn=data;
   });
 })
 
@@ -112,9 +124,14 @@ angular.module('blog', ['ngRoute','ngAnimate','ngSanitize'])
 //Very basic, just gets the article requested, and sends it to the page
 .controller('ViewPostCtrl', function($scope, $routeParams, $location, Articles) {
   $scope.article = {};
+  $scope.loggedIn = false;
 
   Articles.getArticle($routeParams.post_id).success(function(data) {
     $scope.article=data[0];
+  });
+
+  Articles.loggedIn().success(function(data) {
+    $scope.loggedIn=data;
   });
 });
 //nice helper function for getting the date

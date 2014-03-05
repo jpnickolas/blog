@@ -101,6 +101,7 @@ a {
 }
 #nav img {
   margin-top:5px;
+  margin-bottom:-2px;
   max-width:30px;
   max-height:30px;
   -webkit-transform: rotateY(180deg);

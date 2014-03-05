@@ -28,7 +28,8 @@ var Article = mongoose.model('Article', {
   url: String,
   content: String,
   summary: String,
-  published: Date
+  published: Date,
+  draft: Boolean
 });
 
 //creates a user type for the database and passport to use
@@ -68,17 +69,18 @@ function loggedIn(user, callback) {
   if(!user) 
     callback(false)
   
+  else {
+    User.findOne({_id:user}, function(err, found) {
+      if(err) 
+        callback(false);
 
-  User.findOne({_id:user}, function(err, found) {
-    if(err) 
-      callback(false);
-
-    else if(!found)
-      callback(false);
+      else if(!found)
+        callback(false);
     
-    else
-      callback(true);
-  });
+      else
+        callback(true);
+    });
+  }
 }
 
 //serializes the user to be stored in a cookie (done using mongoDB _id, so
@@ -104,21 +106,41 @@ app.post('/login',
 
 //returns a list of the articles in json
 app.get('/api/articles', function(req, res) {
-  Article.find(function(err, articles) {
-    if(err) 
-      res.send(err);
+  loggedIn(req.user, function(authenticated) {
+    var criteria = {};
+    
+    //cannot view drafts unless logged in
+    if(!authenticated)
+      criteria.draft=false;
+
+    //finds all the articles that fit the criteria
+    Article.find(criteria,function(err, articles) {
+      if(err) 
+        res.send(err);
       
-    res.json(articles);
+      res.json(articles);
+    });
   });
 });
 
 //returns a specific article based on a url stored in the database
 app.get('/api/articles/:article_url', function(req, res) {
-  Article.find({url:req.params.article_url}, function(err, article) {
-    if(err)
-      res.send(err);
+  loggedIn(req.user, function(authenticated) {
+    
+    //sets the criteria to search by url
+    var criteria = {};
+    criteria.url=req.params.article_url;
 
-    res.json(article);
+    //cannot view drafts unless logged in
+    if(!authenticated)
+      criteria.draft=false;
+      
+    Article.find(criteria, function(err, article) {  
+      if(err)
+        res.send(err);
+
+      res.json(article);
+    });
   });
 });
 
@@ -141,7 +163,7 @@ app.post('/api/articles/:article_id', function(req, res) {
         found.url=data.url;
         found.content=data.content;
         found.summary=data.summary;
-        found.published=data.published;
+        found.draft = data.draft;
         found.save(); 
         res.json(found);
       }
@@ -153,7 +175,8 @@ app.post('/api/articles/:article_id', function(req, res) {
           url:data.url,
           content: data.content,
           summary: data.summary,
-          published: data.date
+          published: data.date,
+          draft: data.draft
         }, function(err, article) {
           if(err)
             res.send(err);
