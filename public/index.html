@@ -1,8 +1,11 @@
 <!doctype html>
 <html ng-app="blog">
-  <head>
+<head>
+    <base href="/" />
     <meta name="viewport" content="width=900px, initial-scale=0.5">
-    <title>Nick Hilton!</title>
+    <meta name="description" content="This is my personal blog. It is where I will document my technical ramblings and maybe even some nifty tutorials. It is currently bare, but there are posts in the works.">
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <title>Nick Hilton - Blog</title>
     <link href="css/styles.css" type="text/css" rel="stylesheet">
     <script type="text/javascript" src="js/angular.min.js"></script>
     <script type="text/javascript" src="js/angular-route.min.js"></script>
@@ -24,13 +27,13 @@
               </a>
             </li>
             <li>
-              <a href="#/about">
+              <a href="#/page/about">
                 <img src="/images/about-icon.png" /><br>
                 About
               </a>
             </li>
             <li>
-              <a href="#/login">
+              <a href="#/page/login">
                 <img src="/images/login-icon.png" /><br>
                 Login
               </a>
@@ -41,5 +44,18 @@
       </div>
       <div ng-view class="view"></div>
     </div>
+
+
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-49074030-1', 'nickhilton.net');
+      ga('send', 'pageview');
+    </script>
+
   </body>
 </html>

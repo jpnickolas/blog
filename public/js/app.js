@@ -40,28 +40,33 @@ angular.module('blog', ['ngRoute','ngAnimate','ngSanitize'])
 
 
 //Controls the layout of the url in the site
-.config(function($routeProvider) {
+.config(function($routeProvider, $locationProvider) {
+  
+  if(window.history && window.history.pushState){
+    $locationProvider.html5Mode(true);
+  }
+
   $routeProvider
     .when('/', {
       controller:'ListCtrl',
       templateUrl:'list.html'
     })
-    .when('/post/:post_id', {
+    .when('/page/post/:post_id', {
       controller: 'ViewPostCtrl',
       templateUrl: 'view.html'
     })
-    .when('/new/post', {
+    .when('/page/new/post', {
       controller: 'NewPostCtrl',
       templateUrl: 'edit.html'
     })
-    .when('/post/edit/:post_id', {
+    .when('/page/post/edit/:post_id', {
       controller:'EditPostCtrl',
       templateUrl:'edit.html'
     })
-    .when('/login', {
+    .when('/page/login', {
       templateUrl:'login.html'
     })
-    .when('/about', {
+    .when('/page/about', {
       templateUrl:'about.html'
     })
     .otherwise({

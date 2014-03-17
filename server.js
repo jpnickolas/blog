@@ -4,7 +4,7 @@ var mongoose=require('mongoose');
 var passport=require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
-mongoose.connect('mongodb://nickhilton.net/blog');
+mongoose.connect('mongodb://127.0.0.1/blog');
 
 //initialization of express app
 app.configure(function() {
@@ -19,6 +19,12 @@ app.configure(function() {
   app.use(passport.initialize());
   app.use(passport.session());
   app.use(app.router);
+  
+  //handles the fact that I've thrown static urls out the window. 
+  app.all('/page/*', function(req, res, next) {
+    //Redirect the url provided to index.html, and lets angular deal with it
+    res.sendfile('index.html', { root: __dirname+'/public/'});
+  });
 });
 
 

@@ -1,7 +1,21 @@
 body {
-  background-color:#535353;
+  background-image:url(/images/bg.png);
+
   font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  margin:15px 0;
 }
+
+::-webkit-scrollbar {
+  width:7px;
+}
+
+::-webkit-scrollbar-track {
+  background:#525252;
+}
+::-webkit-scrollbar-thumb {
+  background: #222;
+}
+
 h1,h2 {
   font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
 }
