@@ -1,8 +1,20 @@
 var express = require('express');
 var app = express();
+
 var mongoose=require('mongoose');
 var passport=require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var fs = require('fs');
+
+//the two servers that will be running in parallel
+var http = require('http');
+var https = require('https');
+
+//gets the ssl credentials
+var options = {
+  key: fs.readFileSync('cert/key.pem'),
+  cert: fs.readFileSync('cert/cert.pem')
+}
 
 mongoose.connect('mongodb://127.0.0.1/blog');
 
@@ -233,4 +245,7 @@ app.get('/api/loggedIn', function(req, res) {
   });
 });
 
-app.listen(80);
+//starts both servers to be identical to offer a secure option
+http.createServer(app).listen(80);
+
+https.createServer(options, app).listen(443);
