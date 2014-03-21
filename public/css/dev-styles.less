@@ -1,3 +1,27 @@
+@fg-color: #0AF;
+@bg-color: #202020;
+
+.linear-gradient(@color1,@pos1,@color2,@pos2) { 
+  background: -webkit-gradient(linear, left top, left bottom, 
+    color-stop(@pos1,@color1), color-stop(@pos2,@color2));
+  background: -moz-linear-gradient(top, @color1 @pos1, @color2 @pos2);
+  background: -ms-linear-gradient(top, @color1 @pos1, @color2 @pos2);
+}
+.transition(@time, @attr) {
+  transition: @time cubic-bezier(0.25, 0.25, 0.75, 0.75) @attr;
+  -webkit-transition: @time cubic-bezier(0.25, 0.25, 0.75, 0.75) @attr;
+  -moz-transition: @time cubic-bezier(0.250, 0.250, 0.750, 0.750) @attr;
+  -ms-transition: @time cubic-bezier(0.250, 0.250, 0.750, 0.750) @attr;
+  -o-transition: @time cubic-bezier(0.250, 0.250, 0.750, 0.750) @attr;
+}
+.transform(@attr) {
+  transform: @attr;
+  -webkit-transform: @attr;
+  -moz-transform: @attr;
+  -ms-transform: @attr;
+  -o-transform: @attr;
+}
+
 body {
   background-image:url(/images/bg.png);
 
@@ -25,7 +49,7 @@ h1,h2 {
   min-width:690px;
   max-width:800px;
   border-radius:0 25px;
-  background-color:#202020;
+  background-color:@bg-color;
   color:#FFF;
   border:2px solid #141414;
   overflow:hidden;
@@ -33,17 +57,14 @@ h1,h2 {
 }
 
 a {
-  color:#F90;
+  color:@fg-color;
   font-weight:bold;
   text-decoration:none;
 }
 
 #header {
-  background-color:#F90;
-  background: -webkit-gradient(linear, left top, left bottom, 
-    color-stop(95%,#F90), color-stop(100%,#202020));
-  background: -moz-linear-gradient(top, #F90 95%, #202020 100%);
-  background: -ms-linear-gradient(top, #F90 95%, #202020 100%);
+  background-color:@fg-color;
+  .linear-gradient(@fg-color, 95%, @bg-color, 100%);
   padding:25px;
   color:#000;
   position:relative;
@@ -60,20 +81,17 @@ a {
 
 #posts li {
   list-style:none;
-  border-bottom:1px solid #F90;
+  border-bottom:1px solid @fg-color;
   padding-bottom:25px;
 }
 
 #rotate-image {
-  -webkit-transform: rotatey(0deg);
-  -webkit-transition: 500ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
-  transform: rotatey(0deg);
-  transition: 500ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  .transform(rotatey(0deg));
+  .transition(500ms,all);
   border:none;
 }
 #rotate-image:hover {
-  -webkit-transform: rotatey(180deg);
-  transform: rotatey(180deg);
+  .transform(rotatey(180deg));
 }
 
 #nav {
@@ -83,9 +101,7 @@ a {
   background-color: rgba(68,68,68,0.15);
   top: 15%;
   right:50px;
-  -webkit-transform: rotatez(30deg);
-  transform: rotatez(30deg);
-  -ms-transform: rotate(30deg);
+  .transform(rotatez(30deg));
 }
 
 #nav ul {
@@ -94,9 +110,7 @@ a {
 }
 
 #nav li {
-  transform:rotatez(-30deg);
-  -webkit-transform:rotatez(-30deg);
-  -ms-transform: rotate(-30deg);
+  .transform(rotatez(-30deg));
   float:left;
   list-style:none;
   margin-left:5px;
@@ -119,19 +133,17 @@ a {
   margin-bottom:-2px;
   max-width:30px;
   max-height:30px;
-  -webkit-transform: rotateY(180deg);
-  transform: rotateY(180deg);
-  transition: 500ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  .transform(rotateY(180deg));
+  .transition(500ms, all);
   border:none;
 }
 #nav a:hover img {
-  -webkit-transform: rotateY(0deg);
-  transform: rotateY(0deg);
+  .transform(rotateY(0deg));
 }
 
 #nav a:hover {
   background-color:#000;
-  color:#F90;
+  color:@fg-color;
 }
 
 #header-corner {
@@ -141,9 +153,7 @@ position: absolute;
   background-color: rgba(68,68,68,0.15);
   bottom: -50%;
   right: -125px;
-  -webkit-transform: rotatez(30deg);
-  transform: rotatez(30deg);
-  -ms-transform: rotate(30deg);
+  .transform(rotatez(30deg));
 }
 
 textarea, input, button {
@@ -163,3 +173,5 @@ textarea {
   outline:0;
   box-shadow:0px 0px 5px 0px #666;
 }
+
+
