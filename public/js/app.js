@@ -124,6 +124,19 @@ angular.module('blog', ['ngRoute','ngAnimate','ngSanitize'])
     Articles.deleteArticle($scope.article._id);
     $location.path('#/');
   };
+  
+  // initialisation
+  /*editAreaLoader.init({
+    id: "editor" // id of the textarea to transform    
+    ,start_highlight: true  // if start with highlight
+    ,toolbar: "syntax_selection"
+    ,allow_resize: "both"
+    ,allow_toggle: true
+    ,word_wrap: true
+    ,language: "en"
+    ,change_callback: "updateEditor"
+    ,syntax: "html"  
+  });*/
 })
 
 //Very basic, just gets the article requested, and sends it to the page
@@ -139,6 +152,7 @@ angular.module('blog', ['ngRoute','ngAnimate','ngSanitize'])
     $scope.loggedIn=data;
   });
 });
+
 //nice helper function for getting the date
 function dateNow() {
   var today = new Date();
@@ -149,3 +163,9 @@ function dateNow() {
   if(dd<10){dd='0'+dd;} if(mm<10){mm='0'+mm;} today = mm+'/'+dd+'/'+yyyy;
   return today;
 }
+
+/*function updateEditor(id) {
+  var editor = document.getElementById(id);
+  editor.value=editAreaLoader.getValue(id);
+  $('#'+id).change();
+}*/

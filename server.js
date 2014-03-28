@@ -193,7 +193,7 @@ app.post('/api/articles/:article_id', function(req, res) {
           url:data.url,
           content: data.content,
           summary: data.summary,
-          published: data.date,
+          published: data.published,
           draft: data.draft
         }, function(err, article) {
           if(err)

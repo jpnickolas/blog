@@ -1,14 +1,14 @@
 <ul id="posts">
   <li>
-    Blog Posts 
+    <h2>Blog Posts</h2>
     <span ng-if="loggedIn"> - <a href="#/page/new/post">New Post</a></span>
   </li>
-  <li ng-repeat="article in articles">
-    <h4>
+  <li ng-repeat="article in articles | orderBy:'published':'reverse'">
+    <h2>
       <a href="#/page/post/{{article.url}}">
         {{article.title}}
       </a>
-    </h4>
+    </h2>
     <div ng-bind-html="article.summary | trustHTML"></div>
   </li>
 </ul>
