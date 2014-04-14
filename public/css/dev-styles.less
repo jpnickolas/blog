@@ -62,12 +62,7 @@ dd {
   width:90%;
   min-width:690px;
   max-width:1000px;
-  border-radius:0 25px;
-  background-color:@bg-color;
   color:#FFF;
-  border:2px solid #141414;
-  overflow:hidden;
-  box-shadow: 10px 10px 5px -3px #535353;
   .transition(500ms,all);
 }
 
@@ -79,26 +74,25 @@ a {
 
 #header {
   background-color:@fg-color;
-  .linear-gradient(@fg-color, 95%, @bg-color, 100%);
   padding:25px;
   color:#000;
   position:relative;
   overflow:hidden;
   height:130px;
+  box-shadow: 10px 10px 5px -3px #535353;
   .transition(500ms,all);
 }
 
 .view {
-  padding:25px;
 }
 
 #posts {
-  padding:0 10px;;
+  padding:0;
+  margin:0;
 }
 
 #posts li {
   list-style:none;
-  border-bottom:1px solid @fg-color;
   padding-bottom:25px;
 }
 
@@ -185,10 +179,28 @@ textarea, input, button {
   padding: 2px 10px;
   overflow: hidden;
 }
+
 textarea {
   width:98%;
   height:300px;
 }
+
+#summary {
+  height:100px;
+}
+
+input[type="submit"], button {
+  cursor:pointer;
+}
+
+.content-box {
+  background:@bg-color;
+  padding:25px;
+  box-shadow: 10px 10px 5px -3px #535353;
+  margin-top: 40px;
+  .transition(500ms, all);
+}
+
 *:focus {
   outline:0;
   box-shadow:0px 0px 5px 0px #666;
@@ -205,10 +217,24 @@ textarea {
   #content {
     min-width:0px;
     width:100%;
-    border-radius:0 0 0 0;
-    box-shadow:0 0 0 0;
     border:none;
     margin:0;
+  }
+
+  .content-box {
+    box-shadow:0 0 0 0 #000;
+    margin:0;
+    padding:10px 25px;
+    border-bottom:1px solid @fg-color;
+  }
+
+  #header {
+    box-shadow:0 0 0 0 #000;
+  }
+
+  #footer {
+    padding-bottom:25px;
+    border:none;
   }
 }
 
@@ -244,7 +270,6 @@ textarea {
     overflow:hidden;
     top:95px;
     left:0;
-    height:auto;
     
     ul {
       margin-left:0;

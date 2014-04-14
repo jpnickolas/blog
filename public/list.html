@@ -1,5 +1,5 @@
 <ul id="posts">
-  <li>
+  <li class="content-box">
     <h2>
       Blog Posts
       <span ng-if="loggedIn">
@@ -7,7 +7,7 @@
        </span>
     </h2>
   </li>
-  <li ng-repeat="article in articles | orderBy:'published':'reverse'">
+  <li class="content-box" ng-repeat="article in articles | orderBy:'published':'reverse'">
     <h2>
       <a href="#/page/post/{{article.url}}">
         {{article.title}}
