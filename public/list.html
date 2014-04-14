@@ -1,7 +1,11 @@
 <ul id="posts">
   <li>
-    <h2>Blog Posts</h2>
-    <span ng-if="loggedIn"> - <a href="#/page/new/post">New Post</a></span>
+    <h2>
+      Blog Posts
+      <span ng-if="loggedIn">
+         - <a href="#/page/new/post">New Post</a>
+       </span>
+    </h2>
   </li>
   <li ng-repeat="article in articles | orderBy:'published':'reverse'">
     <h2>

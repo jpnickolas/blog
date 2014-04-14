@@ -203,15 +203,13 @@ textarea {
   }
 
   #content {
-    min-width:initial;
+    min-width:0px;
     width:100%;
     border-radius:0 0 0 0;
     box-shadow:0 0 0 0;
     border:none;
     margin:0;
   }
-  
-  
 }
 
 @media (max-width: 760px) {
@@ -230,7 +228,7 @@ textarea {
   }
   
   #content {
-    min-width:initial;
+    min-width:0px;
   }
    
   #header-corner {
@@ -238,7 +236,7 @@ textarea {
   }
   
   #nav {
-    .transform(initial);
+    .transform(rotateZ(0));
     width:100%;
     min-width:320px;
     position:absolute;
@@ -246,20 +244,19 @@ textarea {
     overflow:hidden;
     top:95px;
     left:0;
-    height:initial;
+    height:auto;
     
     ul {
       margin-left:0;
     }
 
     li {
-      .transform(initial);
+      .transform(rotateZ(0));
 
       a {
         margin:0 15px;
       }
     }
-
   }
 }
 

@@ -20,7 +20,7 @@ angular.module('blog', ['ngRoute','ngAnimate','ngSanitize'])
       title:article.title,
       url:article.url,
       content:article.content,
-      summary:article.content,
+      summary:article.summary,
       published:dateNow(),
       draft:article.draft
     });

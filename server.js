@@ -9,11 +9,12 @@ var fs = require('fs');
 //the two servers that will be running in parallel
 var http = require('http');
 var https = require('https');
+var __blogdir = '/home/pi/Blog/';
 
 //gets the ssl credentials
 var options = {
-  key: fs.readFileSync('cert/key.pem'),
-  cert: fs.readFileSync('cert/cert.pem')
+  key: fs.readFileSync(__blogdir+'cert/key.pem'),
+  cert: fs.readFileSync(__blogdir+'cert/cert.pem')
 }
 
 mongoose.connect('mongodb://127.0.0.1/blog');
@@ -182,6 +183,8 @@ app.post('/api/articles/:article_id', function(req, res) {
         found.content=data.content;
         found.summary=data.summary;
         found.draft = data.draft;
+        if(found.draft==true)
+          found.published = data.published;
         found.save(); 
         res.json(found);
       }
