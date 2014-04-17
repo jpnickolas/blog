@@ -1,6 +1,6 @@
 <div class="content-box">
 <h1>{{article.title}}</h1>
-
+<p><em>Posted: {{article.published | date:'MM-dd-yyyy'}}</em></p>
 <div ng-bind-html="article.content | trustHTML"></div>
 
 <a href="#/page/post/edit/{{article.url}}" ng-if="loggedIn">Edit Post</a>

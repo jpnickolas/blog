@@ -10,9 +10,13 @@
   <li class="content-box" ng-repeat="article in articles | orderBy:'published':'reverse'">
     <h2>
       <a href="#/page/post/{{article.url}}">
-        {{article.title}}
+        {{article.title}} 
       </a>
     </h2>
+    <p>
+      <em>Posted: {{article.published | date:'MM-dd-yyyy'}}</em>
+    </p>
     <div ng-bind-html="article.summary | trustHTML"></div>
+    <a href="#/page/post/{{article.url}}">Read more</a>
   </li>
 </ul>
