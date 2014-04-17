@@ -141,11 +141,15 @@ angular.module('blog', ['ngRoute','ngAnimate','ngSanitize'])
 
 //Very basic, just gets the article requested, and sends it to the page
 .controller('ViewPostCtrl', function($scope, $routeParams, $location, Articles) {
-  $scope.article = {};
+  $scope.article = false;
   $scope.loggedIn = false;
+  $scope.notFound = false;
 
   Articles.getArticle($routeParams.post_id).success(function(data) {
-    $scope.article=data[0];
+    if(data[0])
+      $scope.article=data[0];
+    else
+      $scope.notFound=true   
   });
 
   Articles.loggedIn().success(function(data) {
