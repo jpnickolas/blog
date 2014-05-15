@@ -44,6 +44,7 @@ angular.module('blog', ['ngRoute','ngAnimate','ngSanitize'])
   
   if(window.history && window.history.pushState){
     $locationProvider.html5Mode(true);
+    $locationProvider.hashPrefix('!');
   }
 
   $routeProvider

@@ -1,11 +1,11 @@
 var express = require('express');
 var app = express();
-app.use(require('prerender-node'));
 
 var mongoose=require('mongoose');
 var passport=require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var fs = require('fs');
+var lessMiddleware = require('less-middleware');
 
 //the two servers that will be running in parallel
 var http = require('http');
@@ -22,6 +22,8 @@ mongoose.connect('mongodb://127.0.0.1/blog');
 
 //initialization of express app
 app.configure(function() {
+  app.use(require('prerender-node'));
+  app.use(lessMiddleware(__dirname + '/public'));
   app.use(express.static(__dirname+'/public/'));
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
@@ -33,7 +35,7 @@ app.configure(function() {
   app.use(passport.initialize());
   app.use(passport.session());
   app.use(app.router);
-  
+
   //handles the fact that I've thrown static urls out the window. 
   app.all('/page/*', function(req, res, next) {
     //Redirect the url provided to index.html, and lets angular deal with it
