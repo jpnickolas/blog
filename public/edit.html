@@ -5,9 +5,11 @@
   <label>Url</label><br>
   <input type="text" name="url" ng-model="article.url"><br>
   <label>Summary</label><br>
-  <textarea id="summary" name="summary" ng-model="article.summary"></textarea>
+  <textarea id="article-summary" name="summary" ng-model="article.summary"></textarea>
+  <div id="summary-editor"></div>
   <label>Content</label><br>
-  <textarea id="editor" name="content" ng-model="article.content"></textarea><br>
+  <textarea id="article-content" name="content" ng-model="article.content"></textarea><br>
+  <div id="content-editor"></div>
   <label>
     <input type="checkbox" name="draft" ng-model="article.draft" checked> 
     Draft
@@ -20,4 +22,6 @@
 <div id="preview" ng-bind-html="article.content | trustHTML">
 </div>
 </div>
-
+<script src="js/ace/ace.js"></script>
+<script>
+</script>

@@ -114,6 +114,10 @@ angular.module('blog', ['ngRoute','ngAnimate','ngSanitize'])
   
   Articles.getArticle($routeParams.post_id).success(function(data) {
     $scope.article=data[0];
+    
+    makeEditor('summary-editor', '#article-summary', $scope.article.summary);
+    makeEditor('content-editor', '#article-content', $scope.article.content);
+    
   });
   $scope.save = function() {
     Articles.saveArticle($scope.article);
@@ -125,18 +129,6 @@ angular.module('blog', ['ngRoute','ngAnimate','ngSanitize'])
     $location.path('#/');
   };
   
-  // initialisation
-  /*editAreaLoader.init({
-    id: "editor" // id of the textarea to transform    
-    ,start_highlight: true  // if start with highlight
-    ,toolbar: "syntax_selection"
-    ,allow_resize: "both"
-    ,allow_toggle: true
-    ,word_wrap: true
-    ,language: "en"
-    ,change_callback: "updateEditor"
-    ,syntax: "html"  
-  });*/
 })
 
 //Very basic, just gets the article requested, and sends it to the page
@@ -168,8 +160,23 @@ function dateNow() {
   return today;
 }
 
-/*function updateEditor(id) {
-  var editor = document.getElementById(id);
-  editor.value=editAreaLoader.getValue(id);
-  $('#'+id).change();
-}*/
+//initializes the editor to edit html, and update an element with the value
+function makeEditor(editor, contentElement, content) {
+  //creates an html editor
+  var editor = ace.edit(editor);
+  editor.setTheme("ace/theme/vibrant_ink");
+  editor.getSession().setMode("ace/mode/html");
+  editor.setValue(content);
+
+  //sets it to update the angularJS model on input
+  editor.on('change', function() {
+    $(contentElement).val(editor.getValue());
+    $(contentElement).trigger('input');
+  });
+  
+  //stylistic features
+  editor.getSession().setUseWrapMode(true);
+  editor.setOptions({maxLines:20});
+  editor.gotoLine(1);
+  editor.getSession().setTabSize(2);
+}
