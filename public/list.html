@@ -3,13 +3,13 @@
     <h2>
       Blog Posts
       <span ng-if="loggedIn">
-         - <a href="#/page/new/post">New Post</a>
+         - <a href="/page/new/post">New Post</a>
        </span>
     </h2>
   </li>
   <li class="content-box" ng-repeat="article in articles | orderBy:'published':'reverse'">
     <h2>
-      <a href="#/page/post/{{article.url}}">
+      <a href="/page/post/{{article.url}}">
         {{article.title}} 
       </a>
     </h2>
@@ -17,6 +17,6 @@
       <em>Posted: {{article.published | date:'MM-dd-yyyy'}}</em>
     </p>
     <div ng-bind-html="article.summary | trustHTML"></div>
-    <a href="#/page/post/{{article.url}}">Read more</a>
+    <a href="/page/post/{{article.url}}">Read more</a>
   </li>
 </ul>

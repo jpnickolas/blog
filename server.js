@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+app.use(require('prerender-node'));
 
 var mongoose=require('mongoose');
 var passport=require('passport');

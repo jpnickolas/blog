@@ -102,7 +102,7 @@ angular.module('blog', ['ngRoute','ngAnimate','ngSanitize'])
   
   $scope.save = function() {
     Articles.saveArticle($scope.article);
-    $location.path('#/');
+    $location.path('#!/');
   };
 
 })
@@ -121,12 +121,12 @@ angular.module('blog', ['ngRoute','ngAnimate','ngSanitize'])
   });
   $scope.save = function() {
     Articles.saveArticle($scope.article);
-    $location.path('#/');
+    $location.path('#!/');
   };
 
   $scope.delete = function() {
     Articles.deleteArticle($scope.article._id);
-    $location.path('#/');
+    $location.path('#!/');
   };
   
 })
